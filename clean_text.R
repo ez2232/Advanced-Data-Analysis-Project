@@ -135,3 +135,19 @@ ex.doc <- paste(
 summarize.document(ex.doc, top.k=2)
 
 summarize.document(emails$ExtractedBodyText[4321], top.k=3)
+
+n.summaries <- dim(unclean.text)[1]
+summarized <- vector(mode="list", n.summaries)
+for (i in 1:n.summaries) {
+    if (mod(i,10)==1) {
+        print(i)
+    }
+    summarized[[i]] <- summarize.document(unclean.text$ExtractedBodyText[i], top.k=1)
+}
+
+unclean.text.and.summs <- unclean.text
+unclean.text.and.summs$Summary <- summarized
+unclean.text.and.summs2 <- apply(unclean.text.and.summs, 2, as.character)
+write.table(unclean.text.and.summs2, "summary.csv")
+
+test <- read.table("summary.csv", sep="|")
