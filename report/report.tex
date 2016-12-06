@@ -17,6 +17,7 @@
 \usepackage{algorithm}
 \usepackage{centernot}
 \usepackage[noend]{algpseudocode}
+\usepackage{setspace}
 
 \newtheorem{thm}{Theorem}
 \newtheorem{problem}[thm]{Problem}
@@ -54,7 +55,7 @@
 
 \date{\today}
 \maketitle
-
+\doublespacing
 \section{Introduction}
 
 \section{Objectives}
@@ -62,6 +63,15 @@
 \section{Data Source}
 
 \section{Methodology}
+
+\subsection{An Overview of our Summarization Procedure for one Document}
+\input{overview-summ-methodology.tex}
+
+\subsection{The TextRank Algorithm}
+\input{textrank-methodology.tex}
+
+\subsection{Cleaning the e-mails}
+\input{text-cleaning-methodology.tex}
 
 \section{Results}
 
