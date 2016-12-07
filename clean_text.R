@@ -14,7 +14,10 @@ sent.token.ann <- Maxent_Sent_Token_Annotator()
 word.token.ann <- Maxent_Word_Token_Annotator()
 
 # get rid of empty emails, only look at ID and extracted text
-unclean.text <- filter(emails[,c("Id", "ExtractedBodyText")], nchar(ExtractedBodyText) > 0)
+unclean.text <- filter(emails[,c("Id", "ExtractedBodyText", "SenderPersonId")], nchar(ExtractedBodyText) > 0)
+unclean.text <- merge(unclean.text, email.receivers)
+names(unclean.text)[c(4,5)] = paste("Receiver", names(unclean.text)[c(4,5)], sep = '')
+
 
 sentence.cleaner <-
     . %>%
@@ -149,5 +152,8 @@ unclean.text.and.summs <- unclean.text
 unclean.text.and.summs$Summary <- summarized
 unclean.text.and.summs <- apply(unclean.text.and.summs, c(1,2), unlist)
 
-write.table(unclean.text.and.summs, "summary.csv", sep=",", quote=c(2,3), row.names=F, qmethod="escape")
-test <- read.table("summary.csv", sep=",", fill=T, quote='\"', header=T)
+# write.table(unclean.text.and.summs, "summary.csv", sep=",", quote=c(2,3), row.names=F, qmethod="escape")
+# test <- read.table("summary.csv", sep=",", fill=T, quote='\"', header=T)
+
+write.table(unclean.text.and.summs, "summary.csv", sep="ZAZAXY", quote=c(2,3), row.names=F, qmethod="escape")
+test <- read.table("summary.csv", sep="ZAZAXY", fill=T, quote='\"', header=T)
