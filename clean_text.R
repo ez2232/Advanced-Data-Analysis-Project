@@ -147,7 +147,7 @@ for (i in 1:n.summaries) {
 
 unclean.text.and.summs <- unclean.text
 unclean.text.and.summs$Summary <- summarized
-unclean.text.and.summs2 <- apply(unclean.text.and.summs, 2, as.character)
-write.table(unclean.text.and.summs2, "summary.csv", sep=",", na=' ',quote=T)
+unclean.text.and.summs <- apply(unclean.text.and.summs, c(1,2), unlist)
 
-test <- read.table("summary.csv", sep=",", fill=T, quote='\"', row.names=NULL)
+write.table(unclean.text.and.summs, "summary.csv", sep=",", quote=c(2,3), row.names=F, qmethod="escape")
+test <- read.table("summary.csv", sep=",", fill=T, quote='\"', header=T)
