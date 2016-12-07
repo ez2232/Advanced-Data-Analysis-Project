@@ -1,3 +1,6 @@
+setwd('C:/Users/Jack/Desktop/Columbia Masters/Fall 2016 Courses/Advanced Data Analysis/Group Project/Advanced Data Analysis Project')
+cluster_output1 = read.csv('Community_assignment.csv'); cluster_output1 = cluster_output1[,-1]
+
 
 library(shiny)
 library(visNetwork)
@@ -11,42 +14,53 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Hillary Clinton Data"),
   
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-    	
-    	  #for searching by typing name of node
-    	  # sidebarSearchForm(textId = "searchText", label = "Search..."),
-    	
-       #randomization seed
-    	  sliderInput("Seed",
-    	  		    "Randomization Seed",
-    	  		    min = 1,
-    	  		    max = 999,
-    	  		    value = 500),
-    	
-    	  #number of nodes
-       sliderInput("Nodes",
-                   "Number of Nodes",
-                   min = 1,
-                   max = nodes_max,
-                   value = nodes_cur),
-       
-       #number degree
-       sliderInput("Max_Deg",
-       		    "Max Degree of Any Node as % of Total Nodes",
-       		    min = 0,
-       		    max = 1,
-       		    step = 0.01,
-       		    value = 0.5)
+  # Input Parameters
+  fluidRow(
+  	
+    
+    column(6,
+
+       #clustering group
+    	  selectInput("Group",
+    	  		    "Select Group to Visualize (Network 1)",
+    	  		    choices = c(1:dim(cluster_output1)[1]),
+    	  		    selected = 2),
+    	  
+    	  #graph layout
+    	  selectInput("Layout",
+    	  		    "Select Layout to Visualize (Network 1)",
+    	  		    choices = c("layout_in_circle", "layout_nicely", "layout_on_grid", "layout_randomly",
+    	  		    		  "layout_with_mds"),
+    	  		    selected = "layout_in_circle")
     ),
+    
+    
+    column(6,
+    	  
+    	  #number of clusters
+    	  selectInput("N_clusters",
+    	  		    "Number of Clusters (Network 2)",
+    	  		    choices = c(2,3),
+    	  		    selected = 3),
+    	  
+    	  #graph layout
+    	  selectInput("Layout2",
+    	  		    "Select Layout to Visualize (Network 2)",
+    	  		    choices = c("layout_in_circle", "layout_nicely", "layout_on_grid", "layout_randomly",
+    	  		    		  "layout_with_mds"),
+    	  		    selected = "layout_nicely")
+    )
+    	  
+    	  
+    	
+  ),
     
     # Show a plot of the generated distribution
     mainPanel(
     		tabsetPanel(
-        		tabPanel("Network", visNetworkOutput("network")),
-        		tabPanel("Another tab")
+        		tabPanel("Network 1", visNetworkOutput("network1")),
+        		tabPanel("Network 2", visNetworkOutput("network2"))
         	)
     )
   )
-))
+)
