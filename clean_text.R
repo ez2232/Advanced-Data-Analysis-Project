@@ -126,6 +126,12 @@ summarize.document <- function(text, top.k=1) {
     }
 }
 
+summarize.document2 <- function(text) {
+    bows <- doc2bows(text)
+    ranks <- bows2rank(bows)
+    do.call(paste, as.list(names(bows))[ranks[1]])
+}
+
 ex.doc <- paste(
     "Back when;;;:/ I first@@@@ started this series of _posts on stochastic calculus, the aim was to write up the notes which I began writing while learning the subject myself.",
     "The: idea behind these notes was to give a more intuitive and natural, yet fully rigorous,approach to stochastic integration- and semimartingales than the traditional method.",
