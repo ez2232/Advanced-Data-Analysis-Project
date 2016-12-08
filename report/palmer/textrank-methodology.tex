@@ -5,7 +5,8 @@ The algorithm is based on a random walk model of the typical internet user.
 We assume the user starts on some arbitrary web page, and then either randomly clicks links on the current page or with some re-seeding probability, $d$, navigates to another random web page that was not necessarily linked to from the current one.
 The process of such a user's browsing history is clearly Markovian under this assumption.
 The addition of the re-seeding probability makes this Markov process irreducible and aperiodic, or equivalently, ergodic \cite{intro-prob-models-ross}. 
-This ergodicity property tells us that there exists a so-called stationary distribution over the set of all web pages.
+Ergodicity allows us to conclude that there exists a so-called stationary distribution over the set of all web pages.
+Moreover, this stationary distribution is unique and is the limit of a certain quantity.
 
 The stationary distribution of an ergodic Markov chain has many interpretations.
 One is that the distribution assigns probability mass to each state, and this mass is equivalent to the probability of the Markov process to be observed in some state after the chain has mixed or lost its dependence on its initial position.
@@ -24,13 +25,28 @@ We choose to rank sentences for the sake of simplicity.
 For text, we might imagine that a sentence that is highly similar to many of the other sentences is important in the sense that it may mix the contents of the most sentences to provide an insightful summary of the entire document.
 Naturally, we might choose to define the transition matrix of the Markov chain over sentences by the similarity between sentences, which now reduces our problem to figuring out a measure of pairwise similarity between sentences.
 
-A naive view of sentences is to think of them as sets of words.
+A naive view of sentences is to think of them as sets or multisets of words.
 An easy measure of similarity over sets $S_1$, $S_2$ is the Jaccard similarity:
 \begin{equation*}
-\frac{|S_1 \cap S_2|}{|S_1 \cup S_2|}.
+  J(S_1, S_2) \triangleq \frac{|S_1 \cap S_2|}{|S_1 \cup S_2|}
+\end{equation*}
+which can easily be extended to multisets \cite{wiki:Multiset}.
+
+We opt to use the recommendation of the original TextRank paper \cite{textrank}:
+\begin{equation*}
+  \text{Similarity}(S_1, S_2) \triangleq \frac{ | \{ w_k | w_k \in S_1 \& w_k \in S_2 \} |}{\log(|S_1|) + \log(|S_2|)}
 \end{equation*}
 
-The creators of TextRank recommend something similar:
+although there are many other variations that we did not have the chance to evaluate \cite{textrank-sim-var}.
 
-and there are many other variations.
+To actually compute the TextRank of a document represented as a collection of bags-of-words, we perform the following procedure:
+\begin{enumerate}
+\item For each pair of sentences $S_i$ and $S_j$, compute their similarity $\text{Similarity}(S_i, S_j)$ and store it in a matrix as entry $\tilde{M}_{ij}$.
+\item Renormalize $\tilde{M}$ to get a transition matrix $M$, representing a Markov chain over sentences.
+\item Starting with an initial guess $R_0$, iteratively compute $R_{t+1} = dMR_t + \frac{1-d}{N} \mathbf{1}$.
+\item After enough iterations, $R_t$ will be close enough to the true stationary distribution of our damped Markov chain, and thus can be regarded as the TextRank of our document.
+\end{enumerate}
 
+Running an entirely analogous algorithm on the entirety of the web (a graph consisting of about 322 million edges) took the authors of PageRank approximately 52 iterations for their ranking to converge, and about 45 iterations on a graph half that size \cite{wiki:PageRank}. 
+They concluded that the number of iterations to convergence should be approximately logarithmic in the size of the network.
+Since documents tend to create relatively small and dense similarity graphs, we set our number of iterations to a highly conservative 10 iterations.
