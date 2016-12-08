@@ -1,5 +1,8 @@
-setwd('C:/Users/Jack/Desktop/Columbia Masters/Fall 2016 Courses/Advanced Data Analysis/Group Project/Advanced Data Analysis Project')
-cluster_output1 = read.csv('Community_assignment.csv'); cluster_output1 = cluster_output1[,-1]
+# setwd('C:/Users/Jack/Desktop/Columbia Masters/Fall 2016 Courses/Advanced Data Analysis/Group Project/Advanced Data Analysis Project')
+# cluster_output1 = read.csv('Community_assignment.csv'); cluster_output1 = cluster_output1[,-1]
+# cluster_output1 = read.csv('C:/Users/ez2232/Downloads/Advanced-Data-Analysis-Project-master/Community_assignment.csv');
+cluster_output1 = read.csv('C:/Users/Jack/Desktop/Columbia Masters/Fall 2016 Courses/Advanced Data Analysis/Group Project/Advanced Data Analysis Project/Community_assignment.csv'); 
+cluster_output1 = cluster_output1[,-1]
 
 
 library(shiny)
@@ -23,7 +26,7 @@ shinyUI(fluidPage(
        #clustering group
     	  selectInput("Group",
     	  		    "Select Group to Visualize (Network 1)",
-    	  		    choices = c(1:dim(cluster_output1)[1]),
+    	  		    choices = c(1:max(cluster_output1$Community.ID)),
     	  		    selected = 2),
     	  
     	  #graph layout
