@@ -41,16 +41,16 @@ num.emails.recvd <-
         inner_join(Persons, by=c("PersonId"="Id"))
 
 
-ggplot(arrange(num.emails.sent, desc(count)), aes(x=reorder(Name, -count), y=count)) +
+ggplot(arrange(num.emails.sent, desc(count)), aes(y=count)) +
     geom_bar(stat="identity") +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-            scale_x_discrete(name="Sender") +
+#        theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+            #scale_x_discrete(name="Sender") +
                 scale_y_continuous(name="Number of e-mails sent")
 
 ggplot(arrange(num.emails.recvd[num.emails.recvd$count > 3,], desc(count)), aes(x=reorder(Name, -count), y=count)) +
     geom_bar(stat="identity") +
         theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-            scale_x_discrete(name="Receiver") +
+            #scale_x_discrete(name="Receiver") +
                 scale_y_log10(name="Number of e-mails received")
 
 
@@ -66,7 +66,3 @@ raw_text = as.data.frame(apply(raw_text, 1, str_replace_all,
 						 '[\\s]+', ' '))
 Emails_Cleaned['ExtractedBodyText'] = raw_text
 write.csv(Emails_Cleaned, file = 'Emails_cleaned.csv', row.names = FALSE)
-
-
-
-
