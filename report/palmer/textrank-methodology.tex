@@ -1,0 +1,36 @@
+We treat each e-mail as a self-contained document and attempt to summarize each document using TextRank \cite{textrank}, which is a derivative of PageRank \cite{pagerank} adapted to units of text instead of web pages.
+
+The PageRank algorithm is a way of ranking web pages based on the way that they link to each other.
+The algorithm is based on a random walk model of the typical internet user.
+We assume the user starts on some arbitrary web page, and then either randomly clicks links on the current page or with some re-seeding probability, $d$, navigates to another random web page that was not necessarily linked to from the current one.
+The process of such a user's browsing history is clearly Markovian under this assumption.
+The addition of the re-seeding probability makes this Markov process irreducible and aperiodic, or equivalently, ergodic \cite{intro-prob-models-ross}. 
+This ergodicity property tells us that there exists a so-called stationary distribution over the set of all web pages.
+
+The stationary distribution of an ergodic Markov chain has many interpretations.
+One is that the distribution assigns probability mass to each state, and this mass is equivalent to the probability of the Markov process to be observed in some state after the chain has mixed or lost its dependence on its initial position.
+The other is the ``time-average'' interpretation: the average proportion of time-steps a process will spend in some state tends to this state's mass in the stationary distribution.
+
+Web pages that are assigned a large probability mass are thought to be relatively important in the sense that a random web surfer is more likely to visit it.
+One can sort the pages by the amount of mass assigned to them by the stationary distribution to get a ranking of pages by this notion of importance.
+
+To turn this idea into something that can summarize text, we need to decide on two things.
+The first is the notion of an item to rank, or in our case, units of text.
+The second is the notion of how all items pairwise indicate each other's importance.
+
+A typical choice of unit of text is either sentences or phrases.
+We choose to rank sentences for the sake of simplicity.
+
+For text, we might imagine that a sentence that is highly similar to many of the other sentences is important in the sense that it may mix the contents of the most sentences to provide an insightful summary of the entire document.
+Naturally, we might choose to define the transition matrix of the Markov chain over sentences by the similarity between sentences, which now reduces our problem to figuring out a measure of pairwise similarity between sentences.
+
+A naive view of sentences is to think of them as sets of words.
+An easy measure of similarity over sets $S_1$, $S_2$ is the Jaccard similarity:
+\begin{equation*}
+\frac{|S_1 \cap S_2|}{|S_1 \cup S_2|}.
+\end{equation*}
+
+The creators of TextRank recommend something similar:
+
+and there are many other variations.
+
