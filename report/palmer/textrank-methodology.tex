@@ -42,8 +42,12 @@ although there are many other variations that we did not have the chance to eval
 To actually compute the TextRank of a document represented as a collection of bags-of-words, we perform the following procedure:
 \begin{enumerate}
 \item For each pair of sentences $S_i$ and $S_j$, compute their similarity $\text{Similarity}(S_i, S_j)$ and store it in a matrix as entry $\tilde{M}_{ij}$.
-\item Renormalize $\tilde{M}$ to get a transition matrix $M$, representing a Markov chain over sentences.
-\item Starting with an initial guess $R_0$, iteratively compute $R_{t+1} = dMR_t + \frac{1-d}{N} \mathbf{1}$.
+\item Normalize $\tilde{M}$ to get a transition matrix $M$, representing a Markov chain over sentences.
+\item Starting with an initial guess of the stationary distribution $R_0$, iteratively compute 
+  \[
+    R_{t+1} = dMR_t + \frac{1-d}{N} \mathbf{1}
+  \]
+, where $d$ is the re-seeding probability, $N$ is the number of sentences, and $\mathbf{1}$ is a column vector of ones.
 \item After enough iterations, $R_t$ will be close enough to the true stationary distribution of our damped Markov chain, and thus can be regarded as the TextRank of our document.
 \end{enumerate}
 
