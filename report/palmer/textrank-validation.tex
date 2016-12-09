@@ -1,0 +1,54 @@
+There are a few parameters to choose for TextRank.
+For any use of TextRank at all, one must certainly decide on the re-seeding probability, $d$, as well as some criterion to decide to stop the iterative estimation of the stationary distribution.
+For the purpose of summarization, one must also choose how much of the original text to return to the user.
+
+To better understand the effects of the re-seeding probability, $d$, we first decompose our Markov chain into two Markov chains, one of which exclusively uses the re-seeding effect, and one of which never uses the re-seeding effect.
+Let $M$ be the Markov chain which we eventually compute the stationary distribution of.
+Then $M$ has the form
+\begin{equation*}
+  M = \left[ M_{ij} \right]_{i,j=1}^N = \left[ \Prob{X_{t+1} = j \Given X_t = i} \right]_{i,j=1}^N.
+\end{equation*}
+Denote the event that a random walker is re-seeded $\frak{R}$. 
+A trivial statement of probability is to decompose the above matrix as
+\begin{equation*}
+  \begin{aligned}
+    M_{\frak{R}} &= \left[ \Prob{X_{t+1} = j \Given X_t = i, \frak{R}} \right]_{i,j=1}^N \\
+    M_{\frak{R}^C} &= \left[ \Prob{X_{t+1} = j \Given X_t = i, \frak{R}^C} \right]_{i,j=1}^N \\
+    M &=  M_{\frak{R}} \Prob{\frak{R}}  +  M_{\frak{R}^C} \Prob{\frak{R}^C}     
+  \end{aligned}
+\end{equation*}
+However, because the decision of a random-walker to be re-seeded is just an independent Bernoulli trial before she takes her next step, we find that $M_{\frak{R}}$ is the matrix where every entry is $1/N$ and $M_{\frak{R}^C}$ is merely the normalized matrix of similarities
+
+By definition, $\Prob{\frak{R}} = d$ and therefore
+\begin{equation*}
+  M =  M_{\frak{R}} d  +  M_{\frak{R}^C} (1-d).
+\end{equation*}
+
+At the extreme where $d=0$, the ranking is the ranking of just the normalized similarity matrix if such a ranking exists.
+If $d=1$, then at every step the random walker is choosing a random state from the entire state space with equal probability.
+It's easy to intuit in this scenario that the ranking is a tie across the entire state space.
+A more rigorous explanation of this phenomenon invokes the concept of time reversibility. 
+The eager reader can refer to \cite{intro-prob-models-ross} for a more detailed exposition of this concept.
+
+For $0 < d < 1$, the ranking is both guaranteed to exist, and is typically not a tie across the state space in most applications.
+Therefore, it suffices for us to investigate how often or how wildly the ranks change for various settings of $d$.
+Most articles about the PageRank algorithm or derivatives thereof recommend setting $d=0.85$.
+For our application, we find that the overall ranking is not very sensitive to $d$.
+The overall ranking is typically quite similar for a wide range of $d$ with a few transpositions of adjacent ranks.
+One example is included in Figure \ref{fig:dsens}, where the second and third most important sentences exchange ranks around the middle of our range of $d$.
+\begin{figure}
+  \centering
+\begin{tabular}{c|ccccccccccccc}
+Rank 1:&  4&  4&  4&  4&  4&  4&  4&  4&  4&  4&  4&  4&  4\\
+Rank 2:&  19& 19& 19& 19& 19& 19&  6&  6&  6&  6&  6&  6&  6\\
+Rank 3:&   6&  6&  6&  6&  6&  6& 19& 19& 19& 19& 19& 19& 19 \\
+\end{tabular}
+  \caption{Top 3 ranking sentence (represented by their index) for 10 TextRank iterations for values of $0.1 < d < 0.9$.}
+  \label{fig:dsens}
+\end{figure}
+
+The question of how quickly our initial guess converges to the correct stationary distribution is one that can be handled in a surprisingly theoretical fashion \cite{markovmixing}, and the proposition by the authors of PageRank that only logarithmically many iterations are necessary is quite prescient.
+Indeed, a central result in the theory of mixing times for discrete Markov chains is that for for any initial distribution $x$ and ergodic Markov chain with transition matrix $M$ with eigenvalues $\lambda_1, \lambda_2, ... \lambda_n$ and stationary distribution $\pi$,
+\begin{equation*}
+  \frac{ \| xM^t - \pi \| }{ \| x \|} \leq \max \left(|\lambda_2|, |\lambda_n| \right)^t
+\end{equation*}
