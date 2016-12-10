@@ -1,0 +1,17 @@
+To carry out cluster analysis, we need to generate a document-term matrix. 
+We call all the email text from one receiver a document, we cleaned and transformed the text by 
+\begin{enumerate}
+\item Convert into lower case. Remove problematic symbols, punctuations and numbers.
+\item Remove stop words including 'date', 'can', 'we', 'will' etc. Remove words that are typical in the emails including 'message','sent','original' etc and receivers' names.
+\begin{itemize}
+\item The cleaned text like "... president nightmare scenarios panetta persuaded renditions tool worth keeping rendition program began carefully monitored form clinton administration bush years transformed ..."
+\end{itemize}
+\item Convert all documents into a document-term matrix
+\begin{itemize} 
+\item The matrix has 10 rows representing each email receiver's account; and 20792 columns representing unique words that have appeared in all the email text
+\item In each row, if a certain word appears N times the corresponding column would have 'N' , '0' if not. The sparsity of the matrix is 74\%, the non-/sparse entries are 53249/155201. 
+\end{itemize}
+\item Compute Euclidean distance between each documents.
+\end{enumerate}
+The distance between documents is defined in 20792 dimensional space. To illustrate for instance, if we have two documents Doc1 (house,libya, document) and Doc 2 (house, information, release, document). In the document-term matrix, the two documents is represented by word frequency eg. we can have Doc1=(1, 0, 1, 1), Doc2=(1, 1, 2, 1), the distance between Doc1 and Doc 2 will hence be $\sqrt{(1-1)^{2} + (0-1)^{2} + (1-2)^{2} + (1-1)^{2}} = \sqrt{2}$.
+
