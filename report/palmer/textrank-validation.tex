@@ -2,8 +2,8 @@ There are a few parameters to choose for TextRank.
 For any use of TextRank at all, one must certainly decide on the re-seeding probability, $d$, as well as some criterion to decide to stop the iterative estimation of the stationary distribution.
 
 To better understand the effects of the re-seeding probability, $d$, we first decompose our Markov chain into two Markov chains, one of which exclusively uses the re-seeding effect, and one of which never uses the re-seeding effect.
-Let $M$ be the Markov chain which we eventually compute the stationary distribution of.
-Then $M$ has the form
+Let $M$ be the Markov chain of which we eventually compute the stationary distribution.
+$M$ has the form
 \begin{equation*}
   M = \left[ M_{ij} \right]_{i,j=1}^N = \left[ \Prob{X_{t+1} = j \Given X_t = i} \right]_{i,j=1}^N.
 \end{equation*}

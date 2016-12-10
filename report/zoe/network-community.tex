@@ -1,30 +1,30 @@
-We examine the Hillary Clinton Email network by studying properties of the smaller units - dyads (pairs) and triads (triangles).   
+We examine the Hillary Clinton (abbrev. HC) Email network by studying properties of the smaller units - dyads (pairs) and triads (triangles).   
 
-We first calculate the {\bf density} of this network, which gives us an idea about the extent to which the entire network is connected. The density of a directed network is calculated as Equation \ref{eqt:density}.
+We first calculate the {\bf density} of this network, which gives us an idea about the extent to which the entire network is connected. The density of a directed network is calculated using Equation \ref{eqt:density}.
 \begin{equation}
 \label{eqt:density}
 \mbox{density }= \frac{\mbox{total number of edges}}{\mbox{number of edges if all nodes were connected}}
 \end{equation}
-The density of the HC e-mail network is $0.0028<0.01$, which indicates that this network is not at all well-connected. That is, less than $10\%$ of the potential pairs within this network are connected. 
+The density of the HC e-mail network is $0.0028<0.01$, which indicates that this network is not at all well connected. That is, less than $10\%$ of the potential pairs within this network have sent or received at least one email from each other. 
 
 A dyad is the smallest possible social group in a network. 
-Such simplistic unit is worth studying in sociology, because two people in a dyad can be linked via some rather exclusive and intimate type of connections, such as ``romantic interetst, family relation,[... ,] partners in crime'' \cite{wiki_dyad}.
+Such a simple unit is worth studying in sociology because two people in a dyad can be linked via some rather exclusive and intimate type of connections, such as ``romantic interest, family relation, ... partners in crime'' \cite{wiki_dyad}.
 Among all the $739$ edges in the HC e-mail network, there are $106$ mutual dyads (i.e. double directional links between two individuals), and $527$ asymmetric dyads (the connection only goes one-way). 
 Thus, the proportion of mutual dyads is $\frac{2 \times 106}{739}=0.2869$. 
-This property is called {\bf reciprocity}, which in the context of an e-mail network, gives a rough idea about the dynamic of people's interaction as well as information flow in this network. 
-That is, among all the connected people, about $30\%$ of the communication went two-way. 
+This measure is called {\bf reciprocity}, which in the context of an e-mail network, gives a rough idea about the dynamic of people's interaction as well as information flow through this network. 
+That is, among all the connected people, about $30\%$ of the communication were two-way. 
 
-The study of triads is also significant in sociology, as this type of human group is conceptualized to bear more communicational interactions than a dyad. 
-``For example: adding an extra person, therefore creating a triad, this can result in different language barriers, personal connection, and an overall impression of the third person.'' \cite{wiki_triad}.
+The study of triads is also significant in sociology, as this type of human group is conceptualized to involve more communication interaction than a dyad. According to one source,
+``adding an extra person, therefore creating a triad ... can result in different language barriers, personal connection, and an overall impression of the third person.'' \cite{wiki_triad}.
 Since the goal of our project is to use SNA as a auxiliary  tool to extract important information (both e-mail content and people's association), the study of triads is beyond the scope of our report. 
 However, we do include a brief frequency summary of different forms of triads in our network in the Appendix.
 
 Based on our network, we can use clustering algorithms to find subgroups in the network and thus detect the communities. 
-Because we are analyzing a one-person-centered network, we expect saliently large weight on this person's node and some of the associated edges, which may be coufounding for community detection. 
-And as we are more curious about the unknown in the network, we propose to exclude those HC originated edges from the network. Recall that the sub-networks in Figure \ref{fig:splitnw} - the one for eceived e-mails (Left, Figure \ref{fig:splitnw}) preserves the structure of the whole network (Figure \ref{fig:improvednw}), while there are less edges coming out of the network center.  
+Because we are analyzing a one-person-centered (i.e., HC) network, we expect saliently large weight on this person's node and some of the associated edges, which may cause confounding for community detection. 
+Since we are more curious about the unknown in the network, we propose to exclude from the network those edges that originated from HC. Recall that the sub-networks in Figure \ref{fig:splitnw} - the one for received e-mails (Figure \ref{fig:splitnw}, Left) preserves the structure of the whole network (Figure \ref{fig:improvednw}), while there are less edges coming out of the network center.  
 
-We applied the Fast Greedy Modularity Optimization algorithm \cite{greedy_mod} for the details) to the received E-mails sub-network to find community structure. 
-The algorithm yields a lot of the single-node community and one community of extremely large size - this was all expected as we are dealing with a one-individual centered network. 
+We applied the Fast Greedy Modularity Optimization algorithm \cite{greedy_mod} for the details) to the received emails sub-network to find community structure. 
+The algorithm yields a lot of single-node communities and one community of extremely large size; this was all expected as we are dealing with a one-individual centered network. 
 However, we can examine the communities of size $3$ to $10$ and we do obtain some informative communities that can pass on to the later stage of our project. 
 Table \ref{tab:greedy} shows some of the communities we obtain through Modularity Optimization.
 \begin{table}
@@ -46,8 +46,8 @@ Table \ref{tab:greedy} shows some of the communities we obtain through Modularit
 
 From Table \ref{tab:greedy}, we see that with the exception of one individual ``Tsakina Elbegdori'' (the President of Mongolia), people in Community 11 are linked to Hillary Clinton (and each other) via family relation. 
 Community 4 involves people who are related to Hillary Clinton's public relations and communications strategy matters. 
-For example, Betsy Ebeling is an old and close friend of her, who has played an important role in building a positive public image for HC and antidoting the attacks that Hillary Clinton is untrustworthy. 
-Within the same network, we see Bonnie Ward Klehr (with duplicated labels), who not only is a high school friend of Clinton's, but also designs jewelrys for HC to wear on campaign trail. 
-And we also see people of the similar nature in this community, Doug Hattaway, who was in charge of strategic communications for HC's 2008 presidential campaign, and Robert Russo, Director of Correspondences and Briefings for the Hillary for America campaign this year. 
+For example, Betsy Ebeling is an old and close friend of her who has played an important role in building a positive public image for HC and fighting the perception that Hillary Clinton is untrustworthy. 
+Within the same network, we see Bonnie Ward Klehr (with duplicated labels), who not only is a high school friend of Clinton but also designs jewelry for her to wear on the campaign trail. 
+We also see other people of similar relation to HC in this community like Doug Hattaway, who was in charge of strategic communications for HC's 2008 presidential campaign, and Robert Russo, who was Director of Correspondences and Briefings for the Hillary for America campaign this year. 
 
-With these communities we detected in our network, we hope to gain deeper understanding of Hillary Clinton's e-mails from a social interaction perspective and also help us efficiently browse this large corpus of documents/e-mails to extract as much important information as possible. 
+With the communities we detected in our network, we hope to gain a deeper understanding of Hillary Clinton's e-mails from a social interaction perspective and use the output to efficiently browse the large corpus of documents/e-mails and extract as much important information as possible.

@@ -1,0 +1,3 @@
+Insert missing values
+	Network Visualization subsection - references and figure numbers
+	Network Descriptives subsection - references

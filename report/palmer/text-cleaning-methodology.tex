@@ -7,7 +7,7 @@ Much of our text cleaning effort is dedicated to ensuring that words that are in
 The very first part of cleaning a sentence is simple: we set all of the characters to lowercase, as the capitalization of a word should, in most cases, not change its meaning.
 
 Similarly, we remove any nonalphanumeric symbols from our text, as it seems that the method used to extract the text from the e-mails into a database left many wayward symbols (e.g.\verb!\n!, the newline symbol).
-Any nonalphanumeric symbols were turned into spaces, and any extraneous whitespace was subsequently deleted.
+Any nonalphanumeric symbols were turned into spaces and any extraneous whitespace was subsequently deleted.
 
 The next transformation we apply is removing stop words.
 Stop words are words that almost every valid sentence in the English language contains, such as ``the'', ``a'', ``as'', or ``for''.
