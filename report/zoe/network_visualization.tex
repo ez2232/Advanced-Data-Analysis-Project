@@ -1,11 +1,10 @@
-
 In this subsection, we will present varied ways to visualize the network and some techniques to improve the visualization by using the attributes of the edges and nodes.
 
 \begin{figure}[ht]
 \centering
-\caption{Improved Network after Deleting Low-weight Edges}
+\includegraphics[width = 1\textwidth]{zoe/report_dms_layout}
 \label{fig:improvednw}
-\includegraphics[width = 1\textwidth]{report_dms_layout}
+\caption{Improved Network after Deleting Low-weight Edges}
 \end{figure}
 
 One key factor for effective visualization of a network is the graph layout. We have compared $15$ different types of layout and decided to display our network with the Multidimensional Scale layout. The algorithm behind each layout scheme is beyond the scope of our discussion in this report, but we do invite the readers to see Appendix \ref{App:AppendixA} Figure \fbox{empty ref?}  and compare all $15$ layouts we have tested.
@@ -15,17 +14,19 @@ The natural choice of color and size for nodes is based on the values of variabl
 \label{eqt:rescale}
 \verb+rescaled active_size+ = \log \verb+active_size+ + 1
 \end{equation}
+
 \begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{zoe/report_rescaled_size}
 \caption{Rescaling of Node Size}
 \label{fig:rescalenode}
-\centering
-\includegraphics[width=.9\textwidth]{report_rescaled_size}
 \end{figure}
+
 \begin{figure}[ht]
+\centering
+\includegraphics[width=.9\textwidth]{zoe/report_network_compare}
 \caption{Visualizing Hillary Clinton Received and Sent E-mails}
 \label{fig:splitnw}
-\centering
-\includegraphics[width=.9\textwidth]{report_network_compare}
 \end{figure}
 
 Given a HIllary-centric network, we are also interested in examing the network by the e-mails she received and sent separately. Figure \ref{fig:splitnw} shows the side-by-side sub-network by the node type.
