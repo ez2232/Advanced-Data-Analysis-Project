@@ -5,19 +5,19 @@ We first calculate the {\bf density} of this network, which gives us an idea abo
 \label{eqt:density}
 \mbox{density }= \frac{\mbox{total number of edges}}{\mbox{number of edges if all nodes were connected}}
 \end{equation}
-The density of the HC e-mail network is $0.0028<0.01$, which indicates that this network is not at all well-connected. That is, less than $10\%$ of the people within this network are connected. 
+The density of the HC e-mail network is $0.0028<0.01$, which indicates that this network is not at all well-connected. That is, less than $10\%$ of the potential pairs within this network are connected. 
 
 A dyad is the smallest possible social group in a network. 
 Such simplistic unit is worth studying in sociology, because two people in a dyad can be linked via some rather exclusive and intimate type of connections, such as ``romantic interetst, family relation,[... ,] partners in crime'' \cite{wiki_dyad}.
 Among all the $739$ edges in the HC e-mail network, there are $106$ mutual dyads (i.e. double directional links between two individuals), and $527$ asymmetric dyads (the connection only goes one-way). 
 Thus, the proportion of mutual dyads is $\frac{2 \times 106}{739}=0.2869$. 
 This property is called {\bf reciprocity}, which in the context of an e-mail network, gives a rough idea about the dynamic of people's interaction as well as information flow in this network. 
-That is, among all the connected people, about $30\%$ of the information was communicated and exchanged. 
+That is, among all the connected people, about $30\%$ of the communication went two-way. 
 
 The study of triads is also significant in sociology, as this type of human group is conceptualized to bear more communicational interactions than a dyad. 
 ``For example: adding an extra person, therefore creating a triad, this can result in different language barriers, personal connection, and an overall impression of the third person.'' \cite{wiki_triad}.
 Since the goal of our project is to use SNA as a auxiliary  tool to extract important information (both e-mail content and people's association), the study of triads is beyond the scope of our report. 
-However, we do include a brief frequency summary of different forms of triads in our network in the Appendix \ref{App:AppendixB}.
+However, we do include a brief frequency summary of different forms of triads in our network in the Appendix.
 
 Based on our network, we can use clustering algorithms to find subgroups in the network and thus detect the communities. 
 Because we are analyzing a one-person-centered network, we expect saliently large weight on this person's node and some of the associated edges, which may be coufounding for community detection. 
