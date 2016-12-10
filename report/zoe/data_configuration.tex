@@ -1,0 +1,90 @@
+In the parlance of SNA, the nodes represent all $513$ individuals involved in Hillary Clinton's e-mails based on the \verb+``Persons.csv''+ file from Kaggle. Each person has a distinctive Person ID, and  some of the intuitive key players and their IDs are the following:
+\begin{table}[ht]
+\caption{Key individual by intuition}
+\label{tab:int_key}
+\centering
+\begin{verbatim}
+		#    id            name
+		#    80 Hillary Clinton
+		#    81 Huma Abedin
+		#    87 Jake Sullivan
+\end{verbatim}
+\end{table}
+
+We also assign a type and a weight to each node, which are the \verb+person_type+ and \verb+active_size+ variables in Figure \ref{fig:node_file}. The node type captures the characteristic of the person and is set up as below (see Table \ref{tab:node_type} for a simple overview for \verb+person_type+ by counts):
+\begin{itemize}
+\item \verb+person_type =  3+, node \verb+name+ is Hillary Clinton;
+\item  \verb+person_type =  2+, node \verb+name+ contains ``\verb+@state+''. \\That is, the person name is an governmental email address;
+\item \verb+person_type =  1+, all the others,\\
+ including people with full names, fragmented name, or unidentifiable aliaises.
+\end{itemize}
+
+\begin{table}[ht]
+\caption{Overview of Node Type}
+\label{tab:node_type}
+\centering
+\begin{tabular}{l | r r r}
+\verb+person_type+ & 1 & 2&3\\ \hline 
+count & 355 & 157 &1
+\end{tabular}
+\end{table}
+
+The weight of each node measures the level of activeness of each individual. The weight for Person $i$ is calculated as 
+
+\begin{equation} 
+\verb+active_size+ = \mbox{frequency Person $i$ as Sender} +  \mbox{frequency Person $i$ as Receiver}
+\end{equation}
+\verb+active_size+ has to be at least $1$ to appear in Hillary's e-mails. And a brief summary of the Node Size is shown in Table \ref{tab:node_size}
+\begin{table}[ht]
+\caption{Overview of Node Size}
+\label{tab:node_size}
+\centering
+\begin{tabular}{llllll}
+Min. &1st Qu. & Median&    Mean& 3rd Qu.  &  Max. \\ \hline
+   1.00 &   1.00  &  1.00&   33.32 &   2.00 &7580.00 
+ \end{tabular}
+\end{table} 
+ 
+From Table \ref{tab:node_size}, we see the distribution of \verb+active_size+ is highly skewed, as the quantiles are extremely small and close to each other, while the mean and maximum are extremely large. And we can in fact identify some key individuals by the node size extrema alone - four people with \verb+active_size+ $> 1000$ are the three people in Table \ref{tab:int_key} and Person 32: \verb+Cheryl Mills+.
+
+To better describe the interaction, we use directed graph to depict the network based on the \verb+``Receivers.csv''+ and \verb+``Emails.csv''+ from Kaggle. Hence, we set up variables \verb+from+ and \verb+to+ in the Edges file in Figure \ref{fig:edge_file} to capture direction of the email flow. The Edges file keeps track of a total of $9306$ pairs of one-to-one interaction in $7945$ e-mails. The discrepancy is caused by e-mails with multiple receivers (Hillary is one of the receivers or Hillary sent an e-mail to multiple people).
+
+The edges also have two attributes: \verb+weight+ and \verb+type+. The edge type is labeled as below  
+\begin{itemize}
+\item \verb+type+ = ``received'', if the corresponding e-mail was received by Hillary (and other people);
+\item \verb+type+ = ``sent'', if the corresponding e-mail was sent by Hillary (to one person or more);
+\item \verb+type+ = ``other', if the Sender is marked as ``NA'' in the original Kaggle data file.
+\end{itemize}
+
+Table \ref{tab:edge_type} shows that Hillary Clinton's inbox had more incoming (``received'') e-mails than outgoing ones. A side-by-side network graphs by edge type  will be supplied in Subsection \ref{sna_nw} in order to visually compare these two types of interaction.  
+\begin{table}[ht]
+\caption{Overview of Edge Type}
+\label{tab:edge_type}
+\centering
+\begin{tabular}{l | r r r}
+\verb+type+ & other & received & sent\\ \hline 
+count & 13 & 6549 &2744
+\end{tabular}
+\end{table}
+
+The edge weight is also devised to identify different interaction pattern. The idea is to accumulate weights as the frequency of e-mail exchange between two individuals increases. But we also want to reward exclusivity of two individuals, so we lower the weight if the corresponding e-mails between two individuals involves other people. Therefore, we came up with the following weighting scheme for edge $j$ where $j \in \{1,2 , \cdots, 9306\}$.\begin{enumerate}
+\item Start with initial weight, \verb+weight+$_j = 20$;
+\item Find the corresponding e-mail ID for edge $j$, ID$_j = k$  where $k \in \{1, 2, \cdots, 7945\}$;
+\item Count the number of Receivers for e-mail $k$, $N_{kr}$ and the number of people Cc'ed, $N_{kc}$;
+\item Final weight for edge $j$ is calculated as
+\begin{equation}
+\verb+weight+_j = 20 - N_{kc} - N_{kr}
+\end{equation}
+\end{enumerate}
+Before building the network, we collapse all the edges between the same two nodes by summing their weights and ended up with $739$ distinct directional edges\footnote{``Directional'' in the sense that edges $A \rightarrow B$ and $B \rightarrow A$ were not collapsed. }.
+\begin{table}[ht]
+\caption{Overview of Edge Size}
+\label{tab:edge_size}
+\centering
+\begin{tabular}{llllll}
+Min. &1st Qu. & Median&    Mean& 3rd Qu.  &  Max. \\ \hline
+   7.0    &17.0  &  18.0 &  225.8   & 49.5&25640.0 
+ \end{tabular}
+\end{table} 
+
+Since this is a one-person-centered network, summary statistics of edge weight in Table \ref{tab:edge_size} also have an extremely large maximum comparing to the mean and 3rd quartile. While visualizing the network, we make use of the 1st quartile as the cut-off value and cull the edges to make the graph more informative.
