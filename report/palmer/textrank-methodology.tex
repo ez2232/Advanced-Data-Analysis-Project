@@ -2,21 +2,21 @@ We treat each e-mail as a self-contained document and attempt to summarize each 
 
 The PageRank algorithm is a way of ranking web pages based on the way that they link to each other.
 The algorithm is based on a random walk model of the typical internet user.
-We assume the user starts on some arbitrary web page, and then either randomly clicks links on the current page or with some re-seeding probability, $d$, navigates to another random web page that was not necessarily linked to from the current one.
+We assume the user starts on some arbitrary web page and then either randomly clicks links on the current page or with some re-seeding probability, $d$, navigates to another random web page that was not necessarily linked to from the current one.
 The process of such a user's browsing history is clearly Markovian under this assumption.
 The addition of the re-seeding probability makes this Markov process irreducible and aperiodic, or equivalently, ergodic \cite{intro-prob-models-ross}. 
 Ergodicity allows us to conclude that there exists a so-called stationary distribution over the set of all web pages.
 Moreover, this stationary distribution is unique and is the limit of a certain quantity.
 
 The stationary distribution of an ergodic Markov chain has many interpretations.
-One is that the distribution assigns probability mass to each state, and this mass is equivalent to the probability of the Markov process to be observed in some state after the chain has mixed or lost its dependence on its initial position.
+One is that the distribution assigns probability mass to each state, where this mass is equivalent to the probability that the Markov process is observed in some state after the chain has mixed or lost its dependence on its initial position.
 The other is the ``time-average'' interpretation: the average proportion of time-steps a process will spend in some state tends to this state's mass in the stationary distribution.
 
 Web pages that are assigned a large probability mass are thought to be relatively important in the sense that a random web surfer is more likely to visit it.
 One can sort the pages by the amount of mass assigned to them by the stationary distribution to get a ranking of pages by this notion of importance.
 
 To turn this idea into something that can summarize text, we need to decide on two things.
-The first is the notion of an item to rank, or in our case, units of text.
+The first is the notion of an item to rank, or in our case, a unit of text.
 The second is the notion of how all items pairwise indicate each other's importance.
 
 A typical choice of unit of text is either sentences or phrases.
@@ -48,9 +48,9 @@ To actually compute the TextRank of a document represented as a collection of ba
     R_{t+1} = dMR_t + \frac{1-d}{N} \mathbf{1},
   \]
 where $d$ is the re-seeding probability, $N$ is the number of sentences, and $\mathbf{1}$ is a column vector of ones.
-\item After enough iterations, $R_t$ will be close enough to the true stationary distribution of our damped Markov chain, and thus can be regarded as the TextRank of our document.
+\item After enough iterations, $R_t$ will have nearly converged to the true stationary distribution of our damped Markov chain. The rankings of the probabilities in $R_t$ can be regarded as the TextRank of our document.
 \end{enumerate}
 
-Running an entirely analogous algorithm on the entirety of the web (a graph consisting of about 322 million edges) took the authors of PageRank approximately 52 iterations for their ranking to converge, and about 45 iterations on a graph half that size \cite{wiki:PageRank}. 
+Running an entirely analogous algorithm on the entirety of the web (a graph consisting of about 322 million edges) took the Sergey Brin and Larry Page, the authors of PageRank, approximately 52 iterations for their ranking to converge, and about 45 iterations on a graph half that size \cite{wiki:PageRank}. 
 They concluded that the number of iterations to convergence should be approximately logarithmic in the size of the network.
 Since documents tend to create relatively small and dense similarity graphs, we set our number of iterations to a highly conservative 10 iterations.

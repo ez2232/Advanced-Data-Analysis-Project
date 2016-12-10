@@ -1,0 +1,62 @@
+\begin{thebibliography}{10}
+
+\bibitem{textrank-sim-var}
+{\sc Barrios, F., L{\'o}pez, F., Argerich, L., and Wachenchauzer, R.}
+\newblock Variations of the similarity function of textrank for automated
+  summarization.
+\newblock {\em arXiv preprint arXiv:1602.03606\/} (2016).
+
+\bibitem{greedy_mod}
+{\sc {Clauset}, A., {Newman}, M.~E.~J., and {Moore}, C.}
+\newblock Finding community structure in very large networks.
+
+\bibitem{kaggle:emails}
+{\sc Kaggle}.
+\newblock Hillary clinton's emails, 2016.
+\newblock [Online; accessed 08-December-2016].
+
+\bibitem{markovmixing}
+{\sc Levin, D.~A., Peres, Y., and Wilmer, E.~L.}
+\newblock {\em Markov chains and mixing times}.
+\newblock American Mathematical Soc., 2009.
+
+\bibitem{textrank}
+{\sc Mihalcea, R., and Tarau, P.}
+\newblock Textrank: Bringing order into texts.
+\newblock Association for Computational Linguistics.
+
+\bibitem{pagerank}
+{\sc Page, L., Brin, S., Motwani, R., and Winograd, T.}
+\newblock The pagerank citation ranking: bringing order to the web.
+
+\bibitem{intro-prob-models-ross}
+{\sc Ross, S.~M.}
+\newblock {\em Introduction to Probability Models, Tenth Edition}, 10~ed.
+\newblock 2009.
+
+\bibitem{wiki_dyad}
+{\sc Wikipedia}.
+\newblock {Dyad (sociology)} --- {W}ikipedia{,} the free encyclopedia, 2016.
+\newblock [Online; accessed 09-December-2016].
+
+\bibitem{wiki:Multiset}
+{\sc Wikipedia}.
+\newblock Multiset --- {W}ikipedia{,} the free encyclopedia, 2016.
+\newblock [Online; accessed 08-December-2016].
+
+\bibitem{wiki:PageRank}
+{\sc Wikipedia}.
+\newblock Pagerank --- {W}ikipedia{,}, the free encyclopedia, 2016.
+\newblock [Online; accessed 08-December-2016].
+
+\bibitem{wiki_triad}
+{\sc Wikipedia}.
+\newblock {Triad (sociology)} --- {W}ikipedia{,} the free encyclopedia, 2016.
+\newblock [Online; accessed 09-December-2016].
+
+\bibitem{willett2006porter}
+{\sc Willett, P.}
+\newblock The porter stemming algorithm: then and now.
+\newblock {\em Program 40}, 3 (2006), 219--223.
+
+\end{thebibliography}

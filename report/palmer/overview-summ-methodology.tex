@@ -1,11 +1,11 @@
-Because our end goal is to create a visual dashboard for our users, we have to be careful about our bookkeeping while we slice and dice our text data. 
+Because one of our main goals is to create a visual dashboard for our users, we have to be careful about our bookkeeping while we slice and dice our text data. 
 A brief overview of our procedure from end-to-end for one e-mail is as follows:
 \begin{enumerate}
-\item Split the e-mail into sentences
-\item Clean each sentence
-\item Represent each sentence as a bag-of-words
-\item Run TextRank to get a ranking of the bags-of-words
-\item Return the top $k$ sentences from the original e-mail associated with the top $k$ ranking bags-of-words
+\item Split the e-mail into sentences.
+\item Clean each sentence.
+\item Represent each sentence as a bag-of-words.
+\item Run TextRank to get a ranking of the bags-of-words.
+\item Return the top $k$ sentences from the original e-mail associated with the top $k$ ranking bags-of-words.
 \end{enumerate}
 
 Of particular importance to our implementation is keeping track of how the bags-of-words are associated with the original sentences from the e-mail, as the bags-of-words are not nearly as informative to the user.
