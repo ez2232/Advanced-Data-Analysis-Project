@@ -1,4 +1,4 @@
-Looking at the emails dataset, there are 1906 of people who received emails from Hillary. We selected the 10 receivers who received the highest numbers of emails from Clinton directly.
+Looking at the emails dataset, there are 1906 of people who received emails from Hillary. We selected the 10 receivers who received the highest numbers of emails from Clinton directly. We call all email text of one receiver a document. 
 A simple word cloud for all 10 documents can be seen in Figure. \ref{fig:wcloud}
 \begin{figure}[h!]
     \centering
@@ -69,7 +69,7 @@ Although the word counts already reflect Hillary's language style to different p
 
 After obtaining the matrix containing the distances between each pair of document, we tried two clustering methods: hierarchical clustering and K-means. 
 
-For hierarchical clustering, we used ward.D or the Ward's minimum variance method. Figure \ref{fig:dendr} is a cluster dendrogram of the top 10 email accounts. The different colors represent the grouping. The height represents the distance between each document. For example, at the distance of 800 we can separate the group into pink and non-pink subgroups. The calculation of distance is explained in the section above.
+For hierarchical clustering, we used ward.D or the Ward's minimum variance method. Figure \ref{fig:dendr} is a cluster dendrogram of the top 10 email accounts. The different colors represent the grouping. The height represents the distance between each document. For example, at the distance of 800 we can separate the group into pink and non-pink subgroups. The calculation of distance is explained in the Section 4.2.3.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm,height=10cm]
@@ -78,7 +78,7 @@ For hierarchical clustering, we used ward.D or the Ward's minimum variance metho
     \label{fig:dendr}
 \end{figure}
 
-We can also use K-means to determine the clusters. By plotting the Within Group Variation versus K, we can see from Figure \ref{fig:determine} (in Section 9.3) that K=2 or K=3 might be appropriete group numbers for this dataset.
+We can also use K-means to determine the clusters. By plotting the Within Group Variation versus K, we can see from Figure \ref{fig:determine} (in Section 9.3) that K=2 or K=3 might be appropriate group numbers for this dataset.
 
 The cluster plots with K=2 and K=3 can be shown in Figures \ref{fig:c2} and \ref{fig:c3} below. The x and y axes are represented by the first and second components from a PCA analysis. As we can see, the first two components explain more than 95\% of the variance, allowing the clusters to be well separated. 
 
@@ -101,14 +101,14 @@ The results of K-means agree with the results from hierarchical clustering. With
 \end{figure}
 
 \newpage
-Furthermore, we can inspect the most frequent words mentioned by Clinton to each cluster of receivers. Below are the top 5 words related to each of the two clusters. Both clusters share common words like Benghazi, sensitive and house, although Hillary used the term 'agreement' more often with the journalist and the lawyer and the term 'release' more frequently with her aides and advisors. 
+Furthermore, we can inspect the most frequent words mentioned by Clinton to each cluster of receivers. Below are the top 5 words related to each of the two clusters. Both clusters share common words like Benghazi, sensitive and house, although Hillary used the term `agreement' more often with the journalist and the lawyer and the term `release' more frequently with her aides and advisors. 
 
 \begin{center}
 \begin{tabular}{ |p{3cm}|p{3cm}|| p{3cm}|p{3cm}|  }
  \hline
  \multicolumn{4}{|c|}{Top 5 Most Frequent Words} \\
  \hline
- Words (Cluster 1)  & Percentage of Occurance & Words (Cluster 2) & Percentage of Occurance\\
+ Words (Cluster 1)  & Percentage of Occurrence & Words (Cluster 2) & Percentage of Occurrence\\
  \hline
  benghazi & 0.76\% & release  & 0.701\% \\
  house &  0.68\% & benghazi & 0.56\% \\
@@ -118,3 +118,5 @@ Furthermore, we can inspect the most frequent words mentioned by Clinton to each
  \hline
 \end{tabular}
 \end{center}
+
+
