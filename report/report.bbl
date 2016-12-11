@@ -1,27 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{document-term2015}
-Document-term matrix, Dec. 2015.
-\newblock Page Version ID: 696543737.
-
 \bibitem{gentle2015}
-A gentle introduction to cluster analysis using {R}, July 2015.
-
-\bibitem{huma2016}
-Huma {Abedin}, Dec. 2016.
-\newblock Page Version ID: 753426592.
-
-\bibitem{jake2016}
-Jake {Sullivan}, Dec. 2016.
-\newblock Page Version ID: 753053233.
-
-\bibitem{philippe2016}
-Philippe {Reines}, Nov. 2016.
-\newblock Page Version ID: 748420439.
-
-\bibitem{sidney2016}
-Sidney {Blumenthal}, Nov. 2016.
-\newblock Page Version ID: 752306315.
+{\sc Awati, K.}
+\newblock A gentle introduction to cluster analysis using {R}, July 2015.
 
 \bibitem{textrank-sim-var}
 {\sc Barrios, F., L{\'o}pez, F., Argerich, L., and Wachenchauzer, R.}
@@ -63,10 +44,26 @@ Sidney {Blumenthal}, Nov. 2016.
   in document retrieval.
 \newblock {\em Information Processing \& Management 22}, 6 (1986), 465--476.
 
+\bibitem{document-term2015}
+{\sc Wikipedia}.
+\newblock Document-term matrix --- {W}ikipedia{,}, the free encyclopedia, Dec.
+  2015.
+\newblock [Online; accessed 11-December-2016].
+
 \bibitem{wiki_dyad}
 {\sc Wikipedia}.
 \newblock {Dyad (sociology)} --- {W}ikipedia{,} the free encyclopedia, 2016.
 \newblock [Online; accessed 09-December-2016].
+
+\bibitem{huma2016}
+{\sc Wikipedia}.
+\newblock Huma {A}bedin --- {W}ikipedia{m}, the free encyclopedia, Dec. 2016.
+\newblock [Online; accessed 11-December-2016].
+
+\bibitem{jake2016}
+{\sc Wikipedia}.
+\newblock Jake {S}ullivan --- {W}ikipedia{,}, the free encyclopedia, Dec. 2016.
+\newblock [Online; accessed 11-December-2016].
 
 \bibitem{wiki:Multiset}
 {\sc Wikipedia}.
@@ -75,8 +72,19 @@ Sidney {Blumenthal}, Nov. 2016.
 
 \bibitem{wiki:PageRank}
 {\sc Wikipedia}.
-\newblock Pagerank --- {W}ikipedia{,}, the free encyclopedia, 2016.
+\newblock Page{R}ank --- {W}ikipedia{,}, the free encyclopedia, 2016.
 \newblock [Online; accessed 08-December-2016].
+
+\bibitem{philippe2016}
+{\sc Wikipedia}.
+\newblock Philippe {R}eines, Nov. 2016.
+\newblock [Online; accessed 11-December-2016].
+
+\bibitem{sidney2016}
+{\sc Wikipedia}.
+\newblock Sidney {B}lumenthal --- {W}ikipedia{,}, the free encyclopedia, Nov.
+  2016.
+\newblock [Online; accessed 11-December-2016].
 
 \bibitem{wiki_sna}
 {\sc Wikipedia}.
@@ -91,7 +99,7 @@ Sidney {Blumenthal}, Nov. 2016.
 
 \bibitem{willett2006porter}
 {\sc Willett, P.}
-\newblock The porter stemming algorithm: then and now.
+\newblock The {P}orter stemming algorithm: then and now.
 \newblock {\em Program 40}, 3 (2006), 219--223.
 
 \bibitem{zimmermankey2016}

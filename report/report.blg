@@ -3,55 +3,51 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: acm.bst
 Database file #1: report.bib
-Warning--to sort, need author or key in gentle2015
-Warning--to sort, need author or key in document-term2015
-Warning--to sort, need author or key in huma2016
-Warning--to sort, need author or key in sidney2016
-Warning--to sort, need author or key in jake2016
-Warning--to sort, need author or key in philippe2016
+Warning--I'm ignoring sidney2016's extra "note" field
+--line 208 of file report.bib
 Warning--empty journal in greedy_mod
 Warning--empty booktitle in textrank
 Warning--empty journal in pagerank
 Warning--empty publisher in intro-prob-models-ross
 You've used 21 entries,
             2253 wiz_defined-function locations,
-            612 strings with 5970 characters,
-and the built_in function-call counts, 4640 in all, are:
-= -- 419
-> -- 166
+            610 strings with 6086 characters,
+and the built_in function-call counts, 4946 in all, are:
+= -- 443
+> -- 202
 < -- 0
-+ -- 76
-- -- 52
-* -- 264
-:= -- 722
-add.period$ -- 53
++ -- 88
+- -- 64
+* -- 276
+:= -- 824
+add.period$ -- 59
 call.type$ -- 21
-change.case$ -- 88
+change.case$ -- 94
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 181
+cite$ -- 25
+duplicate$ -- 187
 empty$ -- 468
-format.name$ -- 52
-if$ -- 990
+format.name$ -- 64
+if$ -- 1026
 int.to.chr$ -- 0
 int.to.str$ -- 21
 missing$ -- 10
-newline$ -- 98
-num.names$ -- 30
+newline$ -- 104
+num.names$ -- 42
 pop$ -- 168
 preamble$ -- 1
-purify$ -- 68
+purify$ -- 74
 quote$ -- 0
 skip$ -- 135
 stack$ -- 0
 substring$ -- 158
-swap$ -- 33
+swap$ -- 39
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 80
-warning$ -- 10
-while$ -- 34
+warning$ -- 4
+while$ -- 46
 width$ -- 23
-write$ -- 188
-(There were 10 warnings)
+write$ -- 200
+(There were 5 warnings)
