@@ -49,6 +49,12 @@
 \newblock Pagerank --- {W}ikipedia{,}, the free encyclopedia, 2016.
 \newblock [Online; accessed 08-December-2016].
 
+\bibitem{wiki_sna}
+{\sc Wikipedia}.
+\newblock {Social network analysis} --- {W}ikipedia{,} the free encyclopedia.
+\newblock https://en.wikipedia.org/wiki/Social_network_analysis, 2016.
+\newblock [Online; accessed 09-December-2016].
+
 \bibitem{wiki_triad}
 {\sc Wikipedia}.
 \newblock {Triad (sociology)} --- {W}ikipedia{,} the free encyclopedia, 2016.

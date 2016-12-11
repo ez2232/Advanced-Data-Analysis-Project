@@ -117,7 +117,7 @@ Furthermore, we can inspect the most frequent words mentioned by Clinton to each
  \hline
 \end{tabular}
 \end{center}
-=======
+\\\\
 Using the emails datasets, there are 1906 number of people who have received emails from Hillary. We selected 10 receivers who have received highest numbers of emails from Clinton directly.
 A simple word cloud for all 10 documents can be seen in Figure. \ref{fig:wcloud}
 \begin{figure}[h!]
@@ -129,7 +129,7 @@ A simple word cloud for all 10 documents can be seen in Figure. \ref{fig:wcloud}
 \end{figure}
 
 \newpage
-\subsection*{Clustering Results}
+\subsection{Clustering Results}
 After obtaining the matrix containing the distances between each documents, we tried two methods: hierarchical clustering and K-means. 
 \\
 For hierarchical clustering, we have used ward.D method or the Ward's minimum variance method. Figure \ref{fig:dendr} is a cluster dendrogram of the top 10 email accounts. The different colours represents the grouping. The height represents the distance between each document. For example, at distance of 800 we can separate the group in pink and others. The calculation of distance is explained in the section above.
@@ -180,7 +180,7 @@ Further more, we can inspect the most frequent words mentioned by Clinton to eac
  \hline
  \multicolumn{4}{|c|}{Top 5 Most Frequent Words} \\
  \hline
- Words (Cluster 1)  & Percentage of Occurance & Words (Cluster 2) & Percentage of Occurance\\
+ Words (Cluster 1)  & Percentage of Occurrence & Words (Cluster 2) & Percentage of Occurrence\\
  \hline
  benghazi & 0.76\% & release  & 0.701\% \\
  house &  0.68\% & benghazi & 0.56\% \\
@@ -190,4 +190,3 @@ Further more, we can inspect the most frequent words mentioned by Clinton to eac
  \hline
 \end{tabular}
 \end{center}
->>>>>>> 378d580337365fac7b06723b194db1f30dcc9538
