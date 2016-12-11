@@ -1,8 +1,57 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: report.aux
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
 The style file: acm.bst
 Database file #1: report.bib
+Warning--to sort, need author or key in gentle2015
+Warning--to sort, need author or key in document-term2015
+Warning--to sort, need author or key in huma2016
+Warning--to sort, need author or key in sidney2016
+Warning--to sort, need author or key in jake2016
+Warning--to sort, need author or key in philippe2016
 Warning--empty journal in greedy_mod
 Warning--empty booktitle in textrank
 Warning--empty journal in pagerank
 Warning--empty publisher in intro-prob-models-ross
-(There were 4 warnings)
+You've used 21 entries,
+            2253 wiz_defined-function locations,
+            612 strings with 5970 characters,
+and the built_in function-call counts, 4640 in all, are:
+= -- 419
+> -- 166
+< -- 0
++ -- 76
+- -- 52
+* -- 264
+:= -- 722
+add.period$ -- 53
+call.type$ -- 21
+change.case$ -- 88
+chr.to.int$ -- 0
+cite$ -- 31
+duplicate$ -- 181
+empty$ -- 468
+format.name$ -- 52
+if$ -- 990
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 10
+newline$ -- 98
+num.names$ -- 30
+pop$ -- 168
+preamble$ -- 1
+purify$ -- 68
+quote$ -- 0
+skip$ -- 135
+stack$ -- 0
+substring$ -- 158
+swap$ -- 33
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 80
+warning$ -- 10
+while$ -- 34
+width$ -- 23
+write$ -- 188
+(There were 10 warnings)
