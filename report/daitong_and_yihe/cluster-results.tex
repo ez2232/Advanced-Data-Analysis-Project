@@ -63,10 +63,11 @@ Huma Abedin received the highest amount of emails from Hillary, though these wer
 
 Although the word counts already reflect Hillary's language style to different people in some sense, we would like to carry out the cluster analysis in terms of text similarities to answer questions like: 
 \begin{enumerate}
+\singlespacing
   \item Does Hillary talk about similar key issues to certain (group of) people?
   \item Can we separate emails sent to private accounts from the emails sent to work accounts based only on the language used?
 \end{enumerate}
-
+\doublespacing
 After obtaining the matrix containing the distances between each pair of document, we tried two clustering methods: hierarchical clustering and K-means. 
 
 For hierarchical clustering, we used ward.D or the Ward's minimum variance method. Figure \ref{fig:dendr} is a cluster dendrogram of the top 10 email accounts. The different colors represent the grouping. The height represents the distance between each document. For example, at the distance of 800 we can separate the group into pink and non-pink subgroups. The calculation of distance is explained in the Section 4.2.3.
@@ -97,7 +98,7 @@ The results of K-means agree with the results from hierarchical clustering. With
     \includegraphics[width=10cm,height=9cm]
     {daitong_and_yihe/c3.pdf}
     \caption{Cluster Plot with K=3}
-    \label{fig:c2}
+    \label{fig:c3}
 \end{figure}
 
 \newpage

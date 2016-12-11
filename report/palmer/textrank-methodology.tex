@@ -40,6 +40,7 @@ We opt to use the recommendation of the original TextRank paper \cite{textrank}:
 although there are many other variations that we did not have the chance to evaluate \cite{textrank-sim-var}.
 
 To actually compute the TextRank of a document represented as a collection of bags-of-words, we perform the following procedure:
+\singlespacing
 \begin{enumerate}
 \item For each pair of sentences $S_i$ and $S_j$, compute their similarity $\text{Similarity}(S_i, S_j)$ and store it in a matrix as entry $\tilde{M}_{ij}$.
 \item Normalize $\tilde{M}$ to get a transition matrix $M$, representing a Markov chain over sentences.
@@ -50,7 +51,7 @@ To actually compute the TextRank of a document represented as a collection of ba
 where $d$ is the re-seeding probability, $N$ is the number of sentences, and $\mathbf{1}$ is a column vector of ones.
 \item After enough iterations, $R_t$ will have nearly converged to the true stationary distribution of our damped Markov chain. The rankings of the probabilities in $R_t$ can be regarded as the TextRank of our document.
 \end{enumerate}
-
+\doublespacing
 Running an entirely analogous algorithm on the entirety of the web (a graph consisting of about 322 million edges) took the Sergey Brin and Larry Page, the authors of PageRank, approximately 52 iterations for their ranking to converge, and about 45 iterations on a graph half that size \cite{wiki:PageRank}. 
 They concluded that the number of iterations to convergence should be approximately logarithmic in the size of the network.
 Since documents tend to create relatively small and dense similarity graphs, we set our number of iterations to a highly conservative 10 iterations.

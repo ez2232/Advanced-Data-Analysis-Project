@@ -1,0 +1,70 @@
+# setwd('C:/Users/Jack/Desktop/Columbia Masters/Fall 2016 Courses/Advanced Data Analysis/Group Project/Advanced Data Analysis Project')
+# cluster_output1 = read.csv('Community_assignment.csv'); cluster_output1 = cluster_output1[,-1]
+# cluster_output1 = read.csv('C:/Users/ez2232/Downloads/Advanced-Data-Analysis-Project-master/Community_assignment.csv');
+attach("summary_data.RData")
+cluster_output1 = read.csv('Community_assignment.csv'); 
+cluster_output1 = cluster_output1[,-1]
+
+
+library(shiny)
+library(visNetwork)
+
+nodes_max = 100
+nodes_cur = 3
+
+# Define UI for application that draws a histogram
+shinyUI(fluidPage(
+  
+  # Application title
+  titlePanel("Hillary Clinton Data"),
+  
+  # Input Parameters
+  fluidRow(
+  	
+    
+    column(6,
+
+       #clustering group
+    	  selectInput("Group",
+    	  		    "Select Group to Visualize (Network 1)",
+    	  		    choices = c(1:max(cluster_output1$Community.ID)),
+    	  		    selected = 2),
+    	  
+    	  #graph layout
+    	  selectInput("Layout",
+    	  		    "Select Layout to Visualize (Network 1)",
+    	  		    choices = c("layout_in_circle", "layout_nicely", "layout_on_grid", "layout_randomly",
+    	  		    		  "layout_with_mds"),
+    	  		    selected = "layout_in_circle")
+    ),
+    
+    
+    column(6,
+    	  
+    	  #number of clusters
+    	  selectInput("N_clusters",
+    	  		    "Number of Clusters (Network 2)",
+    	  		    choices = c(2,3),
+    	  		    selected = 3),
+    	  
+    	  #graph layout
+    	  selectInput("Layout2",
+    	  		    "Select Layout to Visualize (Network 2)",
+    	  		    choices = c("layout_in_circle", "layout_nicely", "layout_on_grid", "layout_randomly",
+    	  		    		  "layout_with_mds"),
+    	  		    selected = "layout_nicely")
+    )
+    	  
+    	  
+    	
+  ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+    		tabsetPanel(
+        		tabPanel("Network 1", visNetworkOutput("network1")),
+        		tabPanel("Network 2", visNetworkOutput("network2"))
+        	)
+    )
+  )
+)

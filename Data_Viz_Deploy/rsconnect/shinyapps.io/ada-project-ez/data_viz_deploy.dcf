@@ -1,0 +1,8 @@
+name: data_viz_deploy
+title:
+account: ada-project-ez
+server: shinyapps.io
+appId: 144025
+bundleId: 644436
+url: https://ada-project-ez.shinyapps.io/data_viz_deploy/
+when: 1481495614.01199

@@ -1,5 +1,6 @@
 To carry out Cluster Analysis, we need to generate a document-term matrix \cite{document-term2015}. 
 We compiled for each receiver the emails they received together into a document and then cleaned and transformed the text through the following steps:
+\singlespacing
 \begin{enumerate}
 \item Convert into lower case. Remove problematic symbols, punctuations and numbers.
 \item Remove stop words including 'date', 'can', 'we', 'will' etc. Remove words that are typical in the emails including 'message','sent','original' etc and receivers' names, so that we have documents like:
@@ -13,5 +14,6 @@ We compiled for each receiver the emails they received together into a document 
 \end{itemize}
 \item Compute Euclidean distance between each pair of documents.
 \end{enumerate}
+\doublespacing
 The distance between documents is defined in 20792 dimensional space. To illustrate for instance, suppose we have two documents Doc1 (house, libya, document) and Doc 2 (house, information, release, document). In the document-term matrix, the two documents would be represented by word frequency, eg., we would have Doc1 = (1, 0, 1, 1), Doc2 = (1, 1, 2, 1). The distance between Doc1 and Doc 2 would then be $\sqrt{(1-1)^{2} + (0-1)^{2} + (1-2)^{2} + (1-1)^{2}} = \sqrt{2}$.
 
