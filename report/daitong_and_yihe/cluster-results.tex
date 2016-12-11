@@ -1,5 +1,6 @@
 Looking at the emails dataset, there are 1906 of people who received emails from Hillary. We selected the 10 receivers who received the highest numbers of emails from Clinton directly.
 A simple word cloud for the emails received by these 10 accounts can be seen below:
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm,height=10cm]
@@ -7,8 +8,8 @@ A simple word cloud for the emails received by these 10 accounts can be seen bel
     \caption{Word Cloud of Emails}
 \end{figure}
 
-These receivers are a mix of both work email addresses as well as personal addresses. For example Huma Mahmood Abedin, the vice chair of Hillary Clinton's 2016 presidential campaign, has received 331 emails through her work email address abedinh@state.gov and 31 through personal email. 
-The top 10 email receivers are as below:
+These receivers are a mix of both work email addresses and personal addresses. For example, Huma Mahmood Abedin, the vice chair of Hillary Clinton's 2016 presidential campaign, received 331 emails through her work email address abedinh@state.gov and 31 through her personal email. 
+The list of the top 10 email receivers is shown below:
 \begin{center}
   \begin{tabular}{ |l| l | c | c |c|}
     \hline
@@ -26,12 +27,11 @@ The top 10 email receivers are as below:
     \hline
   \end{tabular}
 \end{center}
-\\
 
-The length of emails vary much reladless of the number of emails received. In fact we can already see some patterns from the table above just based on the word count. Clinton sent out more lengthy emails to Sidney Blumenthal (personal), Cheryl Mills (personal) and Monica Hanley (work). It makes sense by considering the their roles and specilizations. 
-According to Wikipedia, Blumenthal is a journalist specializing in foreign policy, a former aide to President Bill Clinton and a long-time confidant to Hillary. Mills is a lawyer who previously defended Bill Clinton in the 1999 impeachment trial; and Hanley is Hillary's assistant at the state department.
-\\
-The table below summarizes the roles or occupations of these 8 key persons:
+The typical length of emails varies wildly independent of the number of emails each account received. We can see some patterns from the table above based on the word count. Clinton sent out more lengthy emails to Sidney Blumenthal (personal), Cheryl Mills (personal) and Monica Hanley (work). It makes sense by considering the nature of their connections to HC. 
+According to Wikipedia, Blumenthal is a journalist specializing in foreign policy, a former aide to President Bill Clinton, and a long-time confidant to Hillary. Mills is a lawyer who previously defended Bill Clinton in the 1999 impeachment trial and Hanley is Hillary's assistant at the state department.
+
+The table below summarizes the roles or occupations of these 8 key persons in relation to Hillary:
 \begin{center}
  \begin{tabular}{ |l|l| } 
   \hline
@@ -52,16 +52,18 @@ The table below summarizes the roles or occupations of these 8 key persons:
 \hline
 \end{tabular}
 \end{center}
-Huma Abedin recieved highest amount of emails from Hillary, though mainly brief. She served as the Vice Chair for Hillary's 2016 presidential canpaign and was preciously the Deputy Chief of Staff to Secretary of State Hillary Clinton from 2009 to 2013. The two senior advisors also have deep connecitons with Hillary. Jacob Sullivan spoecializes in foreign policy and was the advisor to Hillary during the campaign. Philippe Reines served as the Deputy Assistant Secretary of State for Strategic Communications in 2010 and was a senior advisor to Secretary of State Hillary Clinton in 2009.Other accounts which have received frequent emails from Clinton are Anne-Marie Slaughter, Richard Verma, Robert Russo, Lissa Muscatine (speech writer) etc. all under 30 emails. 
-The word count reflect Hillary's language style already to different people, we would like to carry out the cluster analysis in terms of text similarities to answer quesiton like: 
+
+Huma Abedin received the highest amount of emails from Hillary, though these were mainly brief. She served as the Vice Chair for Hillary's 2016 presidential campaign and was previously the Deputy Chief of Staff to Secretary of State Hillary Clinton from 2009 to 2013. The two senior advisors also have deep connections to Hillary. Jacob Sullivan specializes in foreign policy and was an advisor to Hillary during the campaign. Philippe Reines served as the Deputy Assistant Secretary of State for Strategic Communications in 2010 and was a senior advisor to Secretary of State Hillary Clinton in 2009. Other accounts that have received frequent emails from Clinton are Anne-Marie Slaughter, Richard Verma, Robert Russo, and Lissa Muscatine (speech writer), all of whom received under 30 emails each. 
+
+Although the word counts already reflect Hillary's language style to different people in some sense, we would like to carry out the cluster analysis in terms of text similarities to answer questions like: 
 \begin{enumerate}
   \item Does Hillary talk about similar key issues to certain (group of) people?
-  \item can we separate emails sent to private accounts from the emails sent to work accounts, based on language used?
+  \item Can we separate emails sent to private accounts from the emails sent to work accounts based only on the language used?
 \end{enumerate}
-\\
-After obtaining the matrix containing the distances between each documents, we tried two methods: hierarchical clustering and K-means. 
-\\
-For hierarchical clustering, we have used ward.D method or the Ward's minimum variance method. Figure 2 is a cluster dendrogram of the top 10 email accounts. The different colours represents the grouping. The height represents the distance between each document. For example, at distance of 800 we can separate the group in pink and others. The calculation of distance is explained in the section above.
+
+After obtaining the matrix containing the distances between each pair of document, we tried two clustering methods: hierarchical clustering and K-means. 
+
+For hierarchical clustering, we used ward.D or the Ward's minimum variance method. Figure 2 is a cluster dendrogram of the top 10 email accounts. The different colors represent the grouping. The height represents the distance between each document. For example, at the distance of 800 we can separate the group into pink and non-pink subgroups. The calculation of distance is explained in the section above.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm,height=10cm]
@@ -69,7 +71,7 @@ For hierarchical clustering, we have used ward.D method or the Ward's minimum va
     \caption{Dendrogram of top 10 receiver accounts}
 \end{figure}
 
-We can also use K-means to determine the clusters. By plotting the within group sum of square versus K, we can see that K=2 or K=3 might be appropriete group numbers for this dataset.
+We can also use K-means to determine the clusters. By plotting the within group sum of square versus K, we can see that K=2 or K=3 might be appropriate group numbers for this dataset.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm,height=10cm]
@@ -77,10 +79,9 @@ We can also use K-means to determine the clusters. By plotting the within group 
     \caption{Dendrogram of top 10 receiver accounts}
 \end{figure}
 
+The cluster plots with K=2 and K=3 can be shown in Figures 3 and 4 below. The x and y axes are represented by the first and second components from a PCA analysis. As we can see, the first two components explain more than 95\% of the variance, allowing the clusters to be well separated. 
 
-The cluster plots with K=2 and K=3 can be shown in Figure 3 and 4 below. The x and y axis are represented by the first and second component from the PCA analysis. As we can see that the first two components explain more than 95\% of the variance, allowing the clusters to be well separated. 
-\\
-The results of K-means agree with the results from hierachical clustering. With K=2, we have Sidney Blumenthal (personal), Cheryl Mills (personal) and Monica Hanley (work) in one group (call it Cluster 1) and other accounts in the second group. With K=3, we have Sidney Blumenthal (personal), Cheryl Mills (personal) in group one, Monica Hanley (work) in group two and other accounts in group 3.
+The results of K-means agree with the results from hierarchical clustering. With K=2, we have Sidney Blumenthal (personal), Cheryl Mills (personal) and Monica Hanley (work) in one group (call it Cluster 1) and the other accounts in the second group. With K=3, we have Sidney Blumenthal (personal), Cheryl Mills (personal) in group one, Monica Hanley (work) in group two, and the other accounts in group 3.
 
 \begin{figure}[h!]
     \centering
@@ -97,8 +98,7 @@ The results of K-means agree with the results from hierachical clustering. With 
 \end{figure}
 
 \newpage
-Further more, we can inspect the most frequent words mentioned by Clinton to each cluster of receivers. Below is the top 5 words used by each of the two clusters. Both clusters share common words like Benghazi, sensitive and house; though Hillary talked about the term 'agreement' more with the journalist and the lawyer; and the term 'release' more with her aides and advisors. 
-\\
+Furthermore, we can inspect the most frequent words mentioned by Clinton to each cluster of receivers. Below are the top 5 words related to each of the two clusters. Both clusters share common words like Benghazi, sensitive and house, although Hillary used the term 'agreement' more often with the journalist and the lawyer and the term 'release' more frequently with her aides and advisors. 
 
 \begin{center}
 \begin{tabular}{ |p{3cm}|p{3cm}|| p{3cm}|p{3cm}|  }
