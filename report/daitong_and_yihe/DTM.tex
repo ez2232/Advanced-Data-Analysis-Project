@@ -2,14 +2,14 @@ To carry out Cluster Analysis, we need to generate a document-term matrix \cite{
 We compiled for each receiver the emails they received together into a document and then cleaned and transformed the text through the following steps:
 \begin{enumerate}
 \item Convert into lower case. Remove problematic symbols, punctuations and numbers.
-\item Remove stop words including 'date', 'can', 'we', 'will' etc. Remove words that are typical in the emails including 'message','sent','original' etc and receivers' names:
+\item Remove stop words including 'date', 'can', 'we', 'will' etc. Remove words that are typical in the emails including 'message','sent','original' etc and receivers' names, so that we have documents like:
 \begin{itemize}
 \item eg., ``... president nightmare scenarios panetta persuaded renditions tool worth keeping rendition program began carefully monitored form clinton administration bush years transformed ...''
 \end{itemize}
-\item Convert all documents into a document-term matrix
+\item Convert all documents into a document-term matrix.
 \begin{itemize} 
-\item The matrix has 10 rows representing each email receiver's account; and 20792 columns representing unique words that have appeared in all the email text
-\item In each row, if a certain word appears N times the corresponding column would have `N' , `0' if if never appears. The sparsity of the matrix is 74\%, with the count of nonzero entries to zero entries being 53249/155201. 
+\item The matrix has 10 rows representing each email receiver's account; and 20792 columns representing unique words that have appeared in all the email text.
+\item In each row, if a certain word appears N times the corresponding column would have `N' , `0' if it never appears. The sparsity of the matrix is 74\%, with the count of non-zero entries to zero entries being 53249/155201. 
 \end{itemize}
 \item Compute Euclidean distance between each pair of documents.
 \end{enumerate}
